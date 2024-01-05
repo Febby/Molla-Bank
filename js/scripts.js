@@ -65,15 +65,48 @@ const displayMovement = function (movements) {
     //check for movemement type
     const type = mov > 0 ? 'deposit' : 'withdrawal'
 
-    const html = `<div class="movements__row">
+    const html = `<div class="movements__row">  
     <div class="movements__type movements__type--${type}">${type}</div>
     <div class="movements__date">TBU</div>
     <div class="movements__value">${mov}</div>
   </div>`
    containerMovements.insertAdjacentHTML('afterbegin', html)
   });
+
+  //Deposits
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+})
+
+console.log("This is the movements: "+ movements);
+console.log("This is the deposits: "+ deposits);
+
+const depositsFor = [];
+
+for (const mov of movements ) if (mov > 0) depositsFor.push(mov);
+
+console.log("Deposits for: " + depositsFor)
+
+// Withdrawals
+
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+})
+
+console.log("Withdrawals -> "+ withdrawals)
+
+const withdrawalsFor = []
+
+for (const mov of movements) if(mov < 0) withdrawalsFor.push(mov)
+
+console.log("Withdrawals for -> " + withdrawalsFor)
+
 }
 displayMovement(account1.movements)
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -87,3 +120,4 @@ displayMovement(account1.movements)
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+

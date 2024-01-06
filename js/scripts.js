@@ -102,8 +102,38 @@ for (const mov of movements) if(mov < 0) withdrawalsFor.push(mov)
 
 console.log("Withdrawals for -> " + withdrawalsFor)
 
+
+
 }
+
+
 displayMovement(account1.movements)
+
+const calcDisplayBalance= function(movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+
+  labelBalance.textContent = `${balance} EUR`
+  
+}
+
+
+const createUsernames = function (accs) {
+  accs.forEach(function(acc){
+      acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  })
+  
+}
+createUsernames(accounts);
+
+console.log('This are the accounts: ' + accounts)
+
+calcDisplayBalance(account1.movements)
+
+//reduce 
 
 
 
